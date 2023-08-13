@@ -1,0 +1,27 @@
+{
+	"name": "discord-bot",
+	"description": "a discord bot for my discord server",
+	"version": "0.1",
+	"main": "index.js",
+	"scripts": {
+		"start": "node index.js",
+		"lint": "eslint .",
+		"dev": "nodemon index.js"
+	},
+	"keywords": [
+		"discord",
+		"bot",
+		"discord.js"
+	],
+	"author": "Susurmi",
+	"license": "MIT",
+	"dependencies": {
+		"discord.js": "^14.12.1",
+		"dotenv": "^16.3.1"
+	},
+	"devDependencies": {
+		"eslint": "^8.47.0",
+		"eslint-plugin-jsdoc": "^46.4.6",
+		"nodemon": "^3.0.1"
+	}
+}
