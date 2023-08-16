@@ -5,6 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"start": "node index.js",
+		"deployCommands": "node deployCommands.js",
 		"lint": "eslint .",
 		"dev": "nodemon index.js"
 	},
