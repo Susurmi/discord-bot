@@ -8,7 +8,8 @@ module.exports = {
 	 */
 
 	async execute(member) {
-		const welcomeChannel = member.guild.channels.fetch(process.env.GUILD_ID);
+		// fetches the system channel defined in the server settings.
+		const systemChannel = await member.guild.channels.fetch(member.guild.systemChannel.id);
 
 		const welcomeEmbed = new EmbedBuilder()
 			.setColor('Random')
@@ -23,7 +24,7 @@ module.exports = {
 			.setTimestamp();
 
 		try {
-			welcomeChannel.send({ embeds: [welcomeEmbed] });
+			systemChannel.send({ embeds: [welcomeEmbed] });
 		} catch (error) {
 			console.error(error);
 		}

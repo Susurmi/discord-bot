@@ -1,8 +1,8 @@
 const {
 	SlashCommandBuilder,
-	Interaction,
 	PermissionFlagsBits,
 	EmbedBuilder,
+	CommandInteraction,
 } = require('discord.js');
 
 module.exports = {
@@ -12,7 +12,7 @@ module.exports = {
 		.setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
 
 	/**
-	 * @param {Interaction} interaction
+	 * @param {CommandInteraction} interaction
 	 */
 
 	async execute(interaction) {
