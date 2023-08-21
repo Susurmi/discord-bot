@@ -3,6 +3,10 @@
 	"description": "a discord bot for my discord server",
 	"version": "0.1",
 	"main": "index.js",
+	"repository": {
+		"type": "github",
+		"url": "https://github.com/susurmi/discord-bot/"
+	},
 	"scripts": {
 		"start": "node index.js",
 		"deployCommands": "node deployCommands.js",
@@ -17,12 +21,12 @@
 	"author": "Susurmi",
 	"license": "MIT",
 	"dependencies": {
-		"discord.js": "^14.12.1",
+		"discord.js": "^14.13.0",
 		"dotenv": "^16.3.1"
 	},
 	"devDependencies": {
 		"eslint": "^8.47.0",
-		"eslint-plugin-jsdoc": "^46.4.6",
+		"eslint-plugin-jsdoc": "^46.5.0",
 		"nodemon": "^3.0.1"
 	}
 }

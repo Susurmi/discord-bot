@@ -18,9 +18,11 @@ module.exports = {
 				iconURL: `${member.user.avatarURL({})}`,
 			})
 			.setThumbnail(member.user.avatarURL({ dynamic: true, size: 512 }))
+			.setTitle(`🎉 Welcome to the ${member.guild.name} Server!`)
 			.setDescription(
-				`Welcome ${member.user.username} to the **${member.guild.name}** Server! \n Latest Member Count: **${member.guild.memberCount}**`,
+				`Hey ${member.user.username} welcome to the **${member.guild.name}** Server! \n Enjoy your stay here and have fun!`,
 			)
+			.setFooter({ text: `Latest Member Count: ${member.guild.memberCount}` })
 			.setTimestamp();
 
 		try {
