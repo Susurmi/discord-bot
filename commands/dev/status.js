@@ -8,7 +8,10 @@ const {
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('status')
-		.setDescription('Shows client and websocket ping!')
+		.setDescription('Shows client status information!')
+		.setDescriptionLocalizations({
+			de: 'Zeigt den akuellen Status des Bots an.',
+		})
 		.setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
 
 	/**
@@ -47,7 +50,7 @@ module.exports = {
 			}
 
 			const statusEmbed = new EmbedBuilder()
-				.setAuthor({ name: `${interaction.client.user.username}`, iconURL: icon })
+				.setAuthor({ name: `${interaction.client.user.username}'s Status`, iconURL: icon })
 				.setThumbnail(`${icon}`)
 				.setColor('Random')
 				.addFields({ name: 'Client Latency', value: `${ping}ms`, inline: true })

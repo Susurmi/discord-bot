@@ -5,13 +5,23 @@ const { SlashCommandBuilder, EmbedBuilder, CommandInteraction } = require('disco
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('weather')
-		.setDescription(
-			'shows an embeded message with the current weather information of the provided location.',
-		)
+		.setNameLocalizations({
+			de: 'wetter',
+		})
+		.setDescription('posts current weather information of the provided city.')
+		.setDescriptionLocalizations({
+			de: 'Erstellt einen aktuellen Wetterbericht für die angegebene Stadt.',
+		})
 		.addStringOption((option) =>
 			option
 				.setName('city')
-				.setDescription('provid the location you want to know the weather of.')
+				.setNameLocalizations({
+					de: 'stadt',
+				})
+				.setDescription('provid a city name, that you want to know the weather of.')
+				.setDescriptionLocalizations({
+					de: 'Einen Städte Namen eingeben von der du den Wetterbericht sehen möchtest.',
+				})
 				.setRequired(true),
 		),
 
