@@ -10,6 +10,7 @@ module.exports = {
 	async execute(member) {
 		// fetches the system channel defined in the server settings.
 		const systemChannel = await member.guild.channels.fetch(member.guild.systemChannel.id);
+		const basicUserRole = await member.guild.roles.fetch(process.env.BASIC_USER_ROLE);
 
 		const welcomeEmbed = new EmbedBuilder()
 			.setColor('Random')
@@ -26,6 +27,7 @@ module.exports = {
 			.setTimestamp();
 
 		try {
+			member.roles.add(basicUserRole);
 			systemChannel.send({ embeds: [welcomeEmbed] });
 		} catch (error) {
 			console.error(error);
