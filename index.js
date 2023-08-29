@@ -3,7 +3,7 @@ const path = require('path');
 const fs = require('fs');
 const { Client, GatewayIntentBits, Collection } = require('discord.js');
 
-const bot = new Client({ intents: [GatewayIntentBits.Guilds] });
+const bot = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildModeration] });
 bot.commands = new Collection();
 
 const loadCommands = () => {
