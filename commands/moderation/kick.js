@@ -4,6 +4,9 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('kick')
 		.setDescription('Kicks a member from this serever.')
+		.setDescriptionLocalizations({
+			de: 'Einen Nutzer vom Server kicken.',
+		})
 		.addUserOption((option) =>
 			option.setName('target-user').setDescription('The user you want to kick').setRequired(true),
 		)

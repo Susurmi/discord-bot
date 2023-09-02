@@ -4,6 +4,7 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('ban')
 		.setDescription('Bans a user from this serever.')
+		.setDescriptionLocalizations('Einen Nutzer vom Server bannen.')
 		.addUserOption((option) =>
 			option.setName('target-user').setDescription('The user you want to ban').setRequired(true),
 		)
