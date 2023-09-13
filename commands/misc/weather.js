@@ -97,7 +97,7 @@ module.exports = {
 					);
 				await interaction.reply({ embeds: [embed] });
 			})
-			.catch(async (error) => {
+			.catch((error) => {
 				console.error(error);
 			});
 	},
