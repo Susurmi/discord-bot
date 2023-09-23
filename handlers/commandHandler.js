@@ -1,27 +1,26 @@
 const path = require('path');
-const fs = require('fs');
+const getFiles = require('../utils/getFiles');
 
 module.exports = (foldername, bot) => {
 	const foldersPath = path.join(__dirname, '/..', foldername);
-	const commandFolders = fs.readdirSync(foldersPath);
+	const commandFolders = getFiles(foldersPath, true);
 	let loadedCommands = 0;
 
-	for (const folder of commandFolders) {
-		const commandsPath = path.join(foldersPath, folder);
-		const commandFiles = fs.readdirSync(commandsPath).filter((file) => file.endsWith('.js'));
-		for (const file of commandFiles) {
-			const filePath = path.join(commandsPath, file);
-			const command = require(filePath);
+	commandFolders.forEach((folder) => {
+		const commandFiles = getFiles(folder);
+
+		commandFiles.forEach((file) => {
+			const command = require(file);
 			if ('data' in command && 'execute' in command) {
 				bot.commands.set(command.data.name, command);
 				loadedCommands++;
 			} else {
 				console.log(
-					`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`,
+					`[WARNING] The command at ${file} is missing a required "data" or "execute" property.`,
 				);
 			}
-		}
-	}
+		});
+	});
 
 	console.log(`Successfully loaded ${loadedCommands} Command${loadedCommands !== 1 ? 's' : ''} !`);
 };

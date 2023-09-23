@@ -1,14 +1,13 @@
 const path = require('path');
-const fs = require('fs');
+const getFiles = require('../utils/getFiles');
 
 module.exports = (foldername, bot) => {
 	const eventsPath = path.join(__dirname, '/..', foldername);
-	const eventFiles = fs.readdirSync(eventsPath).filter((file) => file.endsWith('.js'));
+	const eventFiles = getFiles(eventsPath);
 	let loadedEvents = 0;
 
-	for (const file of eventFiles) {
-		const filePath = path.join(eventsPath, file);
-		const event = require(filePath);
+	eventFiles.forEach((file) => {
+		const event = require(file);
 		if (event.once) {
 			bot.once(event.name, (...args) => event.execute(...args));
 			loadedEvents++;
@@ -16,7 +15,7 @@ module.exports = (foldername, bot) => {
 			bot.on(event.name, (...args) => event.execute(...args));
 			loadedEvents++;
 		}
-	}
+	});
 
 	console.log(`Successfully loaded ${loadedEvents} Event${loadedEvents !== 1 ? 's' : ''} !`);
 };
