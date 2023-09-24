@@ -1,6 +1,13 @@
 const fs = require('fs');
 const path = require('path');
 
+/**
+ *
+ * @param {string} directory
+ * @param {boolean} onlyFolders
+ * @returns
+ */
+
 module.exports = (directory, onlyFolders = false) => {
 	const filesArray = [];
 

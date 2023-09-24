@@ -1,5 +1,12 @@
 const path = require('path');
 const getFiles = require('../utils/getFiles');
+const { Client } = require('discord.js');
+
+/**
+ *
+ * @param {Array} foldername
+ * @param {Client} bot
+ */
 
 module.exports = (foldername, bot) => {
 	const eventsPath = path.join(__dirname, '/..', foldername);

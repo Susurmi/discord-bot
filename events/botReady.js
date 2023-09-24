@@ -1,4 +1,5 @@
 const { Events, Client, ActivityType } = require('discord.js');
+const config = require('../json/config.json');
 
 module.exports = {
 	name: Events.ClientReady,
@@ -9,12 +10,12 @@ module.exports = {
 	 */
 
 	execute(client) {
-		client.user.setUsername(process.env.BOT_NAME);
+		client.user.setUsername(config.bot.nickname);
 
 		client.user.setActivity({
 			type: ActivityType.Custom,
 			name: 'bot-status',
-			state: process.env.CUSTOM_STATUS,
+			state: config.bot.status,
 		});
 
 		console.log(`Ready! Logged in as ${client.user.username}.`);
