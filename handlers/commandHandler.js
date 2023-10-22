@@ -1,16 +1,13 @@
-const path = require('path');
 const getFiles = require('../utils/getFiles');
 const { Client } = require('discord.js');
-
 /**
  *
  * @param {Array} foldername
  * @param {Client} bot
  */
 
-module.exports = (foldername, bot) => {
-	const foldersPath = path.join(__dirname, '/..', foldername);
-	const commandFolders = getFiles(foldersPath, true);
+module.exports = (folderPath, bot) => {
+	const commandFolders = getFiles(folderPath, true);
 	let loadedCommands = 0;
 
 	commandFolders.forEach((folder) => {

@@ -1,4 +1,3 @@
-const path = require('path');
 const getFiles = require('../utils/getFiles');
 const { Client } = require('discord.js');
 
@@ -8,9 +7,8 @@ const { Client } = require('discord.js');
  * @param {Client} bot
  */
 
-module.exports = (foldername, bot) => {
-	const eventsPath = path.join(__dirname, '/..', foldername);
-	const eventFiles = getFiles(eventsPath);
+module.exports = (folderPath, bot) => {
+	const eventFiles = getFiles(folderPath);
 	let loadedEvents = 0;
 
 	eventFiles.forEach((file) => {
