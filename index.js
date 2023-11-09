@@ -2,6 +2,7 @@ require('dotenv').config();
 const { Client, GatewayIntentBits, Collection } = require('discord.js');
 const loadCommands = require('./handlers/commandHandler');
 const loadEvents = require('./handlers/eventHandler');
+const path = require('path');
 
 const bot = new Client({
 	intents: [
@@ -10,6 +11,7 @@ const bot = new Client({
 		GatewayIntentBits.GuildMessages,
 		GatewayIntentBits.GuildMembers,
 		GatewayIntentBits.MessageContent,
+		GatewayIntentBits.GuildScheduledEvents,
 	],
 });
 
@@ -17,10 +19,10 @@ bot.commands = new Collection();
 
 (() => {
 	// Load all Event Files
-	loadEvents('/events', bot);
+	loadEvents(path.join(__dirname, 'events'), bot);
 
 	// Load all Slashcommands
-	loadCommands('/commands', bot);
+	loadCommands(path.join(__dirname, 'commands'), bot);
 
 	// Start Bot
 	const token = process.env.BOT_TOKEN;

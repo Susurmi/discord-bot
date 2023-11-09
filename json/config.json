@@ -2,5 +2,8 @@
 	"bot": {
 		"nickname": "Grumpy",
 		"status": "by Susurmi"
+	},
+	"channels": {
+		"eventChannel": ""
 	}
 }
