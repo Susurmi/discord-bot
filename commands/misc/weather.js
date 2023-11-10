@@ -1,6 +1,11 @@
 require('dotenv').config({ path: '../../../.env' });
 const axios = require('axios');
-const { SlashCommandBuilder, EmbedBuilder, CommandInteraction } = require('discord.js');
+const {
+	SlashCommandBuilder,
+	EmbedBuilder,
+	CommandInteraction,
+	PermissionFlagsBits,
+} = require('discord.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -23,7 +28,8 @@ module.exports = {
 					de: 'Einen Städte Namen eingeben von der du den Wetterbericht sehen möchtest.',
 				})
 				.setRequired(true),
-		),
+		)
+		.setDefaultMemberPermissions(PermissionFlagsBits.UseApplicationCommands),
 
 	/**
 	 * @param {CommandInteraction} interaction
