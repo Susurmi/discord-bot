@@ -16,6 +16,7 @@ const bot = new Client({
 });
 
 bot.commands = new Collection();
+bot.cooldowns = new Collection();
 
 (() => {
 	// Load all Event Files

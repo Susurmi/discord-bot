@@ -31,6 +31,8 @@ module.exports = {
 		)
 		.setDefaultMemberPermissions(PermissionFlagsBits.UseApplicationCommands),
 
+	cooldown: 30,
+
 	/**
 	 * @param {CommandInteraction} interaction
 	 */
