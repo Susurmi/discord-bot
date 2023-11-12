@@ -6,6 +6,13 @@ const token = process.env.BOT_TOKEN;
 const fs = require('node:fs');
 const path = require('node:path');
 
+if (!token || !guildId || clientId) {
+	console.log(
+		'Either Bot Token, guild ID or client ID are missing, provide them in the .env file.',
+	);
+	process.exit();
+}
+
 const commands = [];
 // Grab all the command files from the commands directory you created earlier
 const foldersPath = path.join(__dirname, 'commands');

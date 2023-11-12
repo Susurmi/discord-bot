@@ -27,5 +27,6 @@ bot.cooldowns = new Collection();
 
 	// Start Bot
 	const token = process.env.BOT_TOKEN;
+	if (!token) process.exit();
 	bot.login(token);
 })();
