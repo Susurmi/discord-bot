@@ -1,5 +1,6 @@
 const { Events, Client, ActivityType } = require('discord.js');
 const config = require('../json/config.json');
+const colors = require('colors');
 
 module.exports = {
 	name: Events.ClientReady,
@@ -18,6 +19,6 @@ module.exports = {
 			state: config.bot.status,
 		});
 
-		console.log(`Ready! Logged in as ${client.user.username}.`);
+		console.log(colors.blue(`➤ Ready! Logged in as ${client.user.username}.`));
 	},
 };

@@ -1,5 +1,6 @@
 const getFiles = require('../utils/getFiles');
 const { Client } = require('discord.js');
+const colors = require('colors');
 
 /**
  *
@@ -22,5 +23,7 @@ module.exports = (folderPath, bot) => {
 		}
 	});
 
-	console.log(`Successfully loaded ${loadedEvents} Event${loadedEvents !== 1 ? 's' : ''} !`);
+	console.log(
+		colors.green(`➤ Successfully loaded ${loadedEvents} Event${loadedEvents !== 1 ? 's' : ''} !`),
+	);
 };

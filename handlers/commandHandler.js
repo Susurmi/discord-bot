@@ -1,5 +1,7 @@
 const getFiles = require('../utils/getFiles');
 const { Client } = require('discord.js');
+const colors = require('colors');
+
 /**
  *
  * @param {Array} foldername
@@ -20,11 +22,17 @@ module.exports = (folderPath, bot) => {
 				loadedCommands++;
 			} else {
 				console.log(
-					`[WARNING] The command at ${file} is missing a required "data" or "execute" property.`,
+					colors.red(
+						`[WARNING] The command at ${file} is missing a required "data" or "execute" property.`,
+					),
 				);
 			}
 		});
 	});
 
-	console.log(`Successfully loaded ${loadedCommands} Command${loadedCommands !== 1 ? 's' : ''} !`);
+	console.log(
+		colors.green(
+			`➤ Successfully loaded ${loadedCommands} Command${loadedCommands !== 1 ? 's' : ''} !`,
+		),
+	);
 };

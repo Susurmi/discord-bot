@@ -1,9 +1,14 @@
 {
 	"bot": {
+		"id": "",
 		"nickname": "Grumpy",
 		"status": "by Susurmi"
 	},
+	"guildid": "",
 	"channels": {
 		"eventChannel": ""
+	},
+	"roles": {
+		"welcomeRole": ""
 	}
 }

@@ -1,4 +1,5 @@
 const { Events, GuildMember, EmbedBuilder } = require('discord.js');
+const { roles } = require('../json/config.json');
 
 module.exports = {
 	name: Events.GuildMemberAdd,
@@ -10,7 +11,7 @@ module.exports = {
 	async execute(member) {
 		// fetches the system channel defined in the server settings.
 		const systemChannel = await member.guild.channels.fetch(member.guild.systemChannel.id);
-		const userRoleId = process.env.BASIC_USER_ROLE;
+		const userRoleId = roles.welcomeRole;
 
 		const welcomeEmbed = new EmbedBuilder()
 			.setColor('Random')

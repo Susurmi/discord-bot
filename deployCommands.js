@@ -1,15 +1,17 @@
 require('dotenv').config();
 const { REST, Routes } = require('discord.js');
-const clientId = process.env.CLIENT_ID;
-const guildId = process.env.GUILD_ID;
 const token = process.env.BOT_TOKEN;
 const fs = require('node:fs');
 const path = require('node:path');
+const { bot, guildid } = require('./json/config.json');
 
-if (!token || !guildId || clientId) {
-	console.log(
-		'Either Bot Token, guild ID or client ID are missing, provide them in the .env file.',
-	);
+if (!guildid || !bot.id) {
+	console.log('Either guild ID or client ID are missing, provide them in the config.json file.');
+	process.exit();
+}
+
+if (!token) {
+	console.log('The Bot Token is missing, provide it in the .env file.');
 	process.exit();
 }
 
@@ -45,7 +47,7 @@ const rest = new REST().setToken(token);
 		console.log(`Started refreshing ${commands.length} application (/) commands.`);
 
 		// The put method is used to fully refresh all commands in the guild with the current set
-		const data = await rest.put(Routes.applicationGuildCommands(clientId, guildId), {
+		const data = await rest.put(Routes.applicationGuildCommands(bot.id, guildid), {
 			body: commands,
 		});
 
