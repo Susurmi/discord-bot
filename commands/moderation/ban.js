@@ -1,4 +1,5 @@
 const { CommandInteraction, PermissionFlagsBits, SlashCommandBuilder } = require('discord.js');
+const colors = require('colors');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -56,7 +57,7 @@ module.exports = {
 			await targetUser.ban({ reason });
 			await interaction.editReply(`User ${targetUser} was banned\nReason: ${reason}`);
 		} catch (error) {
-			console.error(error);
+			console.error(colors.red(error));
 		}
 	},
 };

@@ -4,6 +4,7 @@ const {
 	EmbedBuilder,
 	CommandInteraction,
 } = require('discord.js');
+const colors = require('colors');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -65,7 +66,7 @@ module.exports = {
 
 			interaction.editReply({ embeds: [statusEmbed] });
 		} catch (error) {
-			console.error(error);
+			console.error(colors.red(error));
 		}
 	},
 };

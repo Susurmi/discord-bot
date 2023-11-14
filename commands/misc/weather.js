@@ -6,6 +6,7 @@ const {
 	CommandInteraction,
 	PermissionFlagsBits,
 } = require('discord.js');
+const colors = require('colors');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -106,7 +107,7 @@ module.exports = {
 				await interaction.reply({ embeds: [embed] });
 			})
 			.catch((error) => {
-				console.error(error);
+				console.error(colors.red(error));
 			});
 	},
 };

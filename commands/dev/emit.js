@@ -1,4 +1,5 @@
 const { SlashCommandBuilder, PermissionFlagsBits, CommandInteraction } = require('discord.js');
+const colors = require('colors');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -33,7 +34,7 @@ module.exports = {
 			interaction.client.emit(option, interaction.member);
 			interaction.editReply(`Emitted the ${option} event.`);
 		} catch (error) {
-			console.error(error);
+			console.error(colors.red(error));
 		}
 	},
 };

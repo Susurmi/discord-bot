@@ -1,5 +1,6 @@
 const { Events, GuildMember, EmbedBuilder } = require('discord.js');
 const { roles } = require('../json/config.json');
+const colors = require('colors');
 
 module.exports = {
 	name: Events.GuildMemberAdd,
@@ -34,7 +35,7 @@ module.exports = {
 			}
 			systemChannel.send({ embeds: [welcomeEmbed] });
 		} catch (error) {
-			console.error(error);
+			console.error(colors.red(error));
 		}
 	},
 };

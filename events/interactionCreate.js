@@ -49,7 +49,6 @@ module.exports = {
 			await command.execute(interaction);
 		} catch (error) {
 			console.error(colors.red(`Error executing ${interaction.commandName}`));
-			console.error(error);
 		}
 	},
 };
