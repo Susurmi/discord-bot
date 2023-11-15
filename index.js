@@ -1,8 +1,10 @@
 require('dotenv').config();
+const path = require('path');
 const { Client, GatewayIntentBits, Collection } = require('discord.js');
 const loadCommands = require('./handlers/commandHandler');
 const loadEvents = require('./handlers/eventHandler');
-const path = require('path');
+const config = require('./json/config.json');
+const lang = require(`./lang/lang.${config.bot.lang}.js`);
 
 const bot = new Client({
 	intents: [
@@ -17,6 +19,7 @@ const bot = new Client({
 
 bot.commands = new Collection();
 bot.cooldowns = new Collection();
+bot.text = lang;
 
 (() => {
 	// Load all Event Files

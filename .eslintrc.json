@@ -7,6 +7,7 @@
 	"parserOptions": {
 		"ecmaVersion": 2022
 	},
+	"ignorePatterns": ["/lang/**"],
 	"rules": {
 		"jsdoc/require-param-description": 0,
 		"jsdoc/require-returns-description": 0,
