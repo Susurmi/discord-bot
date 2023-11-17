@@ -1,8 +1,9 @@
 // prettier-ignore
 module.exports = {
 	handlers: {
-		eventSuccess: `➤ Successfully loaded ${loadedEvents} Event${loadedEvents !== 1 ? 's' : ''} !`,
-		commandError: `[WARNING] The command at ${file} is missing a required "data" or "execute" property.`,
-		commandSuccess: `➤ Successfully loaded ${loadedCommands} Command${loadedCommands !== 1 ? 's' : ''} !`,
+		langSuccess: (loadedLangsCount) => `➤ Erfolgreich ${loadedLangsCount} Sprachen geladen!`,
+		eventSuccess: (loadedEvents) => `➤ Erfolgreich ${loadedEvents} Event${loadedEvents !== 1 ? 's' : ''} geladen!`,
+		commandError: (file) => `[WARNUNG] Dem Befehl ${file} fehlen die gebrauchten "data" oder "execute" anhänge.`,
+		commandSuccess: (loadedCommands) => `➤ Erfolgreich ${loadedCommands} Befehl${loadedCommands !== 1 ? 'e' : ''} geladen!`,
 	},
 };

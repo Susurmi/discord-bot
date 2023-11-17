@@ -5,7 +5,7 @@ const path = require('path');
  *
  * @param {string} directory
  * @param {boolean} onlyFolders
- * @returns
+ * @returns {string[]} All File Names as Strings of given Folder
  */
 
 module.exports = (directory, onlyFolders = false) => {

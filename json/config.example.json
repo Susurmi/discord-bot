@@ -1,8 +1,10 @@
 {
+	"lang": "",
 	"bot": {
 		"id": "",
-		"nickname": "Grumpy",
-		"status": "by Susurmi"
+		"lang": "",
+		"nickname": "",
+		"status": ""
 	},
 	"guildid": "",
 	"channels": {

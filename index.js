@@ -3,8 +3,7 @@ const path = require('path');
 const { Client, GatewayIntentBits, Collection } = require('discord.js');
 const loadCommands = require('./handlers/commandHandler');
 const loadEvents = require('./handlers/eventHandler');
-const config = require('./json/config.json');
-const lang = require(`./lang/lang.${config.bot.lang}.js`);
+const loadLanguages = require('./handlers/languageHandler');
 
 const bot = new Client({
 	intents: [
@@ -19,9 +18,12 @@ const bot = new Client({
 
 bot.commands = new Collection();
 bot.cooldowns = new Collection();
-bot.text = lang;
+bot.text = [];
 
 (() => {
+	// Load all Language Files
+	loadLanguages(path.join(__dirname, 'lang'), bot);
+
 	// Load all Event Files
 	loadEvents(path.join(__dirname, 'events'), bot);
 
