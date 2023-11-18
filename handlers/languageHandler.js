@@ -10,23 +10,23 @@ const configs = require('../json/config.json');
  */
 
 module.exports = (folderPath, bot) => {
-	const eventFiles = getFiles(folderPath);
+	const langFiles = getFiles(folderPath);
 
-	eventFiles.forEach((file) => {
+	langFiles.forEach((file) => {
 		const languageCodeMatch = file.match(/lang\.([a-zA-Z]+)\.js/);
 		if (languageCodeMatch && languageCodeMatch[1]) {
 			const languageCode = languageCodeMatch[1];
-			const event = require(file);
+			const lang = require(file);
 			bot.text.push({
 				lang: languageCode,
-				data: event,
+				data: lang,
 			});
 		} else {
 			console.error(`Invalid filename format in ${file}`);
 		}
 	});
 
-	const text = bot.text.find((obj) => obj.lang === configs.lang || 'en');
+	const { data: text } = bot.text.find((obj) => obj.lang === configs.lang || 'en');
 
-	console.log(colors.green(text.data.handlers.langSuccess(bot.text.length)));
+	console.log(colors.green(text.handlers.langSuccess(bot.text.length)));
 };

@@ -1,6 +1,7 @@
 const getFiles = require('../utils/getFiles');
 const { Client } = require('discord.js');
 const colors = require('colors');
+const configs = require('../json/config.json');
 
 /**
  *
@@ -9,6 +10,7 @@ const colors = require('colors');
  */
 
 module.exports = (folderPath, bot) => {
+	const { data: text } = bot.text.find((obj) => obj.lang === configs.lang || 'en');
 	const eventFiles = getFiles(folderPath);
 	let loadedEvents = 0;
 
@@ -23,7 +25,5 @@ module.exports = (folderPath, bot) => {
 		}
 	});
 
-	console.log(
-		colors.green(`➤ Successfully loaded ${loadedEvents} Event${loadedEvents !== 1 ? 's' : ''} !`),
-	);
+	console.log(colors.green(text.handlers.eventSuccess(loadedEvents)));
 };

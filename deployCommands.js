@@ -4,14 +4,17 @@ const token = process.env.BOT_TOKEN;
 const fs = require('node:fs');
 const path = require('node:path');
 const { bot, guildid } = require('./json/config.json');
+const colors = require('colors');
 
 if (!guildid || !bot.id) {
-	console.log('Either guild ID or client ID are missing, provide them in the config.json file.');
+	console.log(
+		colors.red('Either guild ID or client ID are missing, provide them in the config.json file.'),
+	);
 	process.exit();
 }
 
 if (!token) {
-	console.log('The Bot Token is missing, provide it in the .env file.');
+	console.log(colors.red('The Bot Token is missing, provide it in the .env file.'));
 	process.exit();
 }
 
@@ -32,7 +35,9 @@ for (const folder of commandFolders) {
 			commands.push(command.data.toJSON());
 		} else {
 			console.log(
-				`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`,
+				colors.red(
+					`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`,
+				),
 			);
 		}
 	}
@@ -44,14 +49,14 @@ const rest = new REST().setToken(token);
 // and deploy your commands!
 (async () => {
 	try {
-		console.log(`Started refreshing ${commands.length} application (/) commands.`);
+		console.log(colors.yellow(`Started refreshing ${commands.length} application (/) commands.`));
 
 		// The put method is used to fully refresh all commands in the guild with the current set
 		const data = await rest.put(Routes.applicationGuildCommands(bot.id, guildid), {
 			body: commands,
 		});
 
-		console.log(`Successfully reloaded ${data.length} application (/) commands.`);
+		console.log(colors.green(`Successfully reloaded ${data.length} application (/) commands.`));
 	} catch (error) {
 		// And of course, make sure you catch and log any errors!
 		console.error(error);

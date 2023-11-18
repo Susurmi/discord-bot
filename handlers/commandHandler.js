@@ -1,6 +1,7 @@
 const getFiles = require('../utils/getFiles');
 const { Client } = require('discord.js');
 const colors = require('colors');
+const configs = require('../json/config.json');
 
 /**
  *
@@ -9,6 +10,7 @@ const colors = require('colors');
  */
 
 module.exports = (folderPath, bot) => {
+	const { data: text } = bot.text.find((obj) => obj.lang === configs.lang || 'en');
 	const commandFolders = getFiles(folderPath, true);
 	let loadedCommands = 0;
 
@@ -21,18 +23,10 @@ module.exports = (folderPath, bot) => {
 				bot.commands.set(command.data.name, command);
 				loadedCommands++;
 			} else {
-				console.log(
-					colors.red(
-						`[WARNING] The command at ${file} is missing a required "data" or "execute" property.`,
-					),
-				);
+				console.log(colors.red(text.handlers.commandError(file)));
 			}
 		});
 	});
 
-	console.log(
-		colors.green(
-			`➤ Successfully loaded ${loadedCommands} Command${loadedCommands !== 1 ? 's' : ''} !`,
-		),
-	);
+	console.log(colors.green(text.handlers.commandSuccess(loadedCommands)));
 };
