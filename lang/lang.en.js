@@ -8,5 +8,10 @@ module.exports = {
 	},
 	ready: {
 		success: (username) => `➤ Ready! Logged in as ${username}(BOT).`
+	},
+	interactionCreate: {
+		commandNotFound: (commandName) => `No command matching ${commandName} was found.`,
+		cooldownTimeout: (commandName, timestamp) => `Please wait, you are on a cooldown for \`${commandName}\`. You can use it again <t:${timestamp}:R>.`,
+		commandError: (commandName) => `Error executing ${commandName}`
 	}
 };

@@ -22,7 +22,7 @@ module.exports = (folderPath, bot) => {
 				data: lang,
 			});
 		} else {
-			console.error(`Invalid filename format in ${file}`);
+			return console.error(`Invalid filename format in ${file}`);
 		}
 	});
 

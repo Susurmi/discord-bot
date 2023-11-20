@@ -9,13 +9,14 @@ module.exports = {
 	 */
 
 	async execute(interaction) {
-		const { client } = interaction;
+		const { client, locale } = interaction;
+		const { data: text } = client.text.find((obj) => obj.lang === locale.substring(0, 2) || 'en');
 		if (!interaction.isChatInputCommand()) return;
 
 		const command = interaction.client.commands.get(interaction.commandName);
 
 		if (!command) {
-			console.error(colors.red(`No command matching ${interaction.commandName} was found.`));
+			console.error(colors.red(text.InteractionCreate.commandNotFound(interaction.commandName)));
 			return;
 		}
 
@@ -36,7 +37,7 @@ module.exports = {
 			if (now < expirationTime) {
 				const expiredTimestamp = Math.round(expirationTime / 1000);
 				return interaction.reply({
-					content: `Please wait, you are on a cooldown for \`${command.data.name}\`. You can use it again <t:${expiredTimestamp}:R>.`,
+					content: text.InteractionCreate.commandError(command.data.name, expiredTimestamp),
 					ephemeral: true,
 				});
 			}
@@ -48,7 +49,7 @@ module.exports = {
 		try {
 			await command.execute(interaction);
 		} catch (error) {
-			console.error(colors.red(`Error executing ${interaction.commandName}`));
+			console.error(colors.red(text.InteractionCreate.commandError(interaction.commandName)));
 		}
 	},
 };
