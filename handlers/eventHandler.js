@@ -11,18 +11,22 @@ const configs = require('../json/config.json');
 
 module.exports = (folderPath, bot) => {
 	const { data: text } = bot.text.find((obj) => obj.lang === configs.lang || 'en');
-	const eventFiles = getFiles(folderPath);
+	const eventFolders = getFiles(folderPath, true);
 	let loadedEvents = 0;
 
-	eventFiles.forEach((file) => {
-		const event = require(file);
-		if (event.once) {
-			bot.once(event.name, (...args) => event.execute(...args));
-			loadedEvents++;
-		} else {
-			bot.on(event.name, (...args) => event.execute(...args));
-			loadedEvents++;
-		}
+	eventFolders.forEach((folder) => {
+		const eventFiles = getFiles(folder);
+
+		eventFiles.forEach((file) => {
+			const event = require(file);
+			if (event.once) {
+				bot.once(event.name, (...args) => event.execute(...args));
+				loadedEvents++;
+			} else {
+				bot.on(event.name, (...args) => event.execute(...args));
+				loadedEvents++;
+			}
+		});
 	});
 
 	console.log(colors.green(text.handlers.eventSuccess(loadedEvents)));

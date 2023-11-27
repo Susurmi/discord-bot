@@ -1,5 +1,5 @@
 const { Events, GuildMember, EmbedBuilder } = require('discord.js');
-const { roles } = require('../json/config.json');
+const { roles } = require('../../json/config.json');
 const colors = require('colors');
 
 module.exports = {

@@ -1,5 +1,5 @@
 const { Events, GuildScheduledEvent } = require('discord.js');
-const config = require('../json/config.json');
+const config = require('../../json/config.json');
 
 module.exports = {
 	name: Events.GuildScheduledEventCreate,
