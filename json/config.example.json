@@ -8,7 +8,8 @@
 	},
 	"guildid": "",
 	"channels": {
-		"eventChannel": ""
+		"eventChannel": "",
+		"freeGamesChannel": ""
 	},
 	"roles": {
 		"welcomeRole": ""
