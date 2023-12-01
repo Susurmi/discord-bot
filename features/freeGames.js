@@ -1,6 +1,7 @@
 const { Client, EmbedBuilder } = require('discord.js');
 const axios = require('axios');
 const configs = require('../json/config.json');
+const colors = require('colors');
 
 /**
  * @param {Client} client
@@ -14,7 +15,7 @@ module.exports = (client) => {
 	const fetchPosts = async () => {
 		try {
 			const res = await axios
-				.get('https://reddit.com/r/gamedeals/new.json?sort=new&t=week&limit=100')
+				.get('https://reddit.com/r/gamedeals/new.json?sort=new&t=week&limit=30')
 				.catch((error) => {
 					client.logger.error(error);
 					return null;
@@ -54,7 +55,7 @@ module.exports = (client) => {
 
 					const embedMsg = new EmbedBuilder()
 						.setColor('Random')
-						.setTitle(title)
+						.setTitle(post[i].data.title)
 						.setURL(`https://www.reddit.com${post[i].data.permalink}`)
 						.setDescription(`Claim **free** game here: \n${post[i].data.url}`);
 
@@ -78,13 +79,17 @@ module.exports = (client) => {
 						embedMsg.setThumbnail(
 							'https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/PlayStation_logo.svg/2560px-PlayStation_logo.svg.png',
 						);
-					} else if (title.includes('Indiegala')) {
+					} else if (title.includes('indiegala')) {
 						embedMsg.setThumbnail(
 							'https://company.indiegala.com/wp-content/uploads/2021/09/indiegala-logo-light-back-rgb.png',
 						);
 					} else if (title.includes('itch')) {
 						embedMsg.setThumbnail(
 							'https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Itch.io_logo.svg/2560px-Itch.io_logo.svg.png',
+						);
+					} else if (title.includes('fanatical')) {
+						embedMsg.setThumbnail(
+							'https://cdn.wccftech.com/wp-content/uploads/2017/11/Fanatical-Logo-768x432.jpg',
 						);
 					}
 
@@ -99,7 +104,15 @@ module.exports = (client) => {
 
 	const fetchGames = async () => {
 		try {
-			const posts = await fetchPosts();
+			if (!configs.channels.freeGamesChannel) {
+				return console.log(
+					colors.yellow(
+						'Please provide a channel id for the free games feature in the configj.json file.',
+					),
+				);
+			}
+
+			const posts = fetchPosts();
 			getCurrentGames(configs.channels.freeGamesChannel, configs.guildid, posts);
 		} catch (error) {
 			console.log(error);
