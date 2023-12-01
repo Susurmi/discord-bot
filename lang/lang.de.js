@@ -13,5 +13,8 @@ module.exports = {
 		commandNotFound: (commandName) => `Command ${commandName} wurde nicht gefunden.`,
 		cooldownTimeout: (commandName, timestamp) => `Bitte warte noch <t:${timestamp}:R> bis du ${commandName} wieder nutzen kannst!`,
 		commandError: (commandName) => `Error beim ausführen von ${commandName}`
+	},
+	presence: {
+		success: (newStatus) => `Bot Status erfolgreich aktualisiert zu :\n**${newStatus}** !`
 	}
 };
