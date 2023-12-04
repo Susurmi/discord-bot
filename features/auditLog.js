@@ -53,4 +53,69 @@ module.exports = (client) => {
 
 		return sendLog(member.guild.id, embed);
 	});
+
+	// Message Deleted
+	client.on('messageDelete', (message) => {
+		if (message.author.bot) return;
+
+		const embed = new EmbedBuilder()
+			.setTitle('Message Deleted')
+			.setColor('Red')
+			.setDescription(
+				`
+			**Author : ** <@${message.author.id}> - *${message.author.tag}*
+			**Date : ** ${message.createdAt}
+			**Channel : ** <#${message.channel.id}> - *${message.channel.name}*
+			**Deleted Message : **\`${message.content.replace(/`/g, "'")}\``,
+			)
+			.setTimestamp();
+
+		return sendLog(message.guild.id, embed);
+	});
+
+	// Message Pinned
+	client.on('messagePinned', (message) => {
+		const embed = new EmbedBuilder()
+			.setTitle('Message Pinned')
+			.setColor('Grey')
+			.setDescription(`${message} has been pinned by ${message.author}`)
+			.setTimestamp();
+
+		return sendLog(message.guild.id, embed);
+	});
+
+	// Message Edited
+	client.on('messageContentEdited', (message, oldContent, newContent) => {
+		const embed = new EmbedBuilder()
+			.setTitle('Message Edited')
+			.setColor('Grey')
+			.setDescription(
+				`Message Edited from \`${oldContent}\` to \`${newContent}\` by ${message.author}`,
+			)
+			.setTimestamp();
+
+		return sendLog(message.guild.id, embed);
+	});
+
+	// Channel Created
+	client.on('channelCreate', (channel) => {
+		const embed = new EmbedBuilder()
+			.setTitle('Channel Created')
+			.setColor('Green')
+			.setDescription(`${channel.name} has been created.`)
+			.setTimestamp();
+
+		return sendLog(channel.guild.id, embed);
+	});
+
+	// Channel Deleted
+	client.on('channelDelete', (channel) => {
+		const embed = new EmbedBuilder()
+			.setTitle('Channel Deleted')
+			.setColor('Red')
+			.setDescription(`${channel.name} has been deleted.`)
+			.setTimestamp();
+
+		return sendLog(channel.guild.id, embed);
+	});
 };
