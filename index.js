@@ -5,6 +5,7 @@ const loadCommands = require('./handlers/commandHandler');
 const loadEvents = require('./handlers/eventHandler');
 const loadLanguages = require('./handlers/languageHandler');
 const freeGames = require('./features/freeGames');
+const auditLog = require('./features/auditLog');
 
 const bot = new Client({
 	intents: [
@@ -33,6 +34,9 @@ bot.text = [];
 
 	// Starting Free Games
 	freeGames(bot);
+
+	// Loading Audit Log Feature
+	auditLog(bot);
 
 	// Start Bot
 	const token = process.env.BOT_TOKEN;
