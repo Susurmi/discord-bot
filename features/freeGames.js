@@ -15,7 +15,7 @@ module.exports = (client) => {
 	const fetchPosts = async () => {
 		try {
 			const res = await axios
-				.get('https://reddit.com/r/gamedeals/new.json?sort=new&t=week&limit=30')
+				.get('https://reddit.com/r/gamedeals/new.json?sort=new&t=week&limit=26')
 				.catch((error) => {
 					client.logger.error(error);
 					return null;
@@ -112,7 +112,7 @@ module.exports = (client) => {
 				);
 			}
 
-			const posts = fetchPosts();
+			const posts = await fetchPosts();
 			getCurrentGames(configs.channels.freeGamesChannel, configs.guildid, posts);
 		} catch (error) {
 			console.log(error);

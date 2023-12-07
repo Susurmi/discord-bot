@@ -9,7 +9,8 @@
 	"guildid": "",
 	"channels": {
 		"eventChannel": "",
-		"freeGamesChannel": ""
+		"freeGamesChannel": "",
+		"logChannel": ""
 	},
 	"roles": {
 		"welcomeRole": ""
