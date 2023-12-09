@@ -7,6 +7,8 @@ const configs = require('../json/config.json');
  */
 
 module.exports = (client) => {
+	const { data: text } = client.text.find((obj) => obj.lang === configs.lang || 'en');
+	console.log(colors.green(text.features.auditLogStart));
 	/**
 	 * @param {string} guildId
 	 * @param {object} embed
@@ -26,7 +28,7 @@ module.exports = (client) => {
 			const guild = await client.guilds.fetch(guildId);
 			const logChannel = await guild.channels.fetch(configs.channels.logChannel);
 
-			logChannel.send({ embeds: [embed] });
+			logChannel.send({ embeds: [embed.setTimestamp()] });
 		} catch (error) {
 			console.error(error);
 		}
@@ -37,8 +39,7 @@ module.exports = (client) => {
 		const embed = new EmbedBuilder()
 			.setTitle('User Joined')
 			.setColor('Green')
-			.setDescription(`Member: ${member.user} (\`${member.user.id}\`)`)
-			.setTimestamp();
+			.setDescription(`Member: ${member.user} (\`${member.user.id}\`)`);
 
 		return sendLog(member.guild.id, embed);
 	});
@@ -48,14 +49,13 @@ module.exports = (client) => {
 		const embed = new EmbedBuilder()
 			.setTitle('User Left')
 			.setColor('Red')
-			.setDescription(`Member: ${member.user} (\`${member.user.id}\`)`)
-			.setTimestamp();
+			.setDescription(`Member: ${member.user} (\`${member.user.id}\`)`);
 
 		return sendLog(member.guild.id, embed);
 	});
 
 	// Message Deleted
-	client.on('messageDelete', (message) => {
+	client.on(Events.MessageDelete, (message) => {
 		if (message.author.bot) return;
 
 		const embed = new EmbedBuilder()
@@ -67,54 +67,39 @@ module.exports = (client) => {
 			**Date : ** ${message.createdAt}
 			**Channel : ** <#${message.channel.id}> - *${message.channel.name}*
 			**Deleted Message : **\`${message.content.replace(/`/g, "'")}\``,
-			)
-			.setTimestamp();
+			);
 
 		return sendLog(message.guild.id, embed);
 	});
 
-	// Message Pinned
-	client.on('messagePinned', (message) => {
-		const embed = new EmbedBuilder()
-			.setTitle('Message Pinned')
-			.setColor('Grey')
-			.setDescription(`${message} has been pinned by ${message.author}`)
-			.setTimestamp();
-
-		return sendLog(message.guild.id, embed);
-	});
-
-	// Message Edited
-	client.on('messageContentEdited', (message, oldContent, newContent) => {
+	// Message Edited/Updated
+	client.on(Events.MessageUpdate, (message, oldContent, newContent) => {
 		const embed = new EmbedBuilder()
 			.setTitle('Message Edited')
 			.setColor('Grey')
 			.setDescription(
 				`Message Edited from \`${oldContent}\` to \`${newContent}\` by ${message.author}`,
-			)
-			.setTimestamp();
+			);
 
 		return sendLog(message.guild.id, embed);
 	});
 
 	// Channel Created
-	client.on('channelCreate', (channel) => {
+	client.on(Events.ChannelCreate, (channel) => {
 		const embed = new EmbedBuilder()
 			.setTitle('Channel Created')
 			.setColor('Green')
-			.setDescription(`${channel.name} has been created.`)
-			.setTimestamp();
+			.setDescription(`${channel.name} has been created.`);
 
 		return sendLog(channel.guild.id, embed);
 	});
 
 	// Channel Deleted
-	client.on('channelDelete', (channel) => {
+	client.on(Events.ChannelDelete, (channel) => {
 		const embed = new EmbedBuilder()
 			.setTitle('Channel Deleted')
 			.setColor('Red')
-			.setDescription(`${channel.name} has been deleted.`)
-			.setTimestamp();
+			.setDescription(`${channel.name} has been deleted.`);
 
 		return sendLog(channel.guild.id, embed);
 	});

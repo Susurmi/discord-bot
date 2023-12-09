@@ -6,6 +6,9 @@ module.exports = {
 		commandError: (file) => `[WARNUNG] Dem Befehl ${file} fehlen die gebrauchten "data" oder "execute" anhänge.`,
 		commandSuccess: (loadedCommands) => `➤ Erfolgreich ${loadedCommands} Befehl${loadedCommands !== 1 ? 'e' : ''} geladen!`,
 	},
+	features: {
+		auditLogStart: '➤ Audit Log erfolgreich gestartet!'
+	},
 	ready: {
 		success: (username) => `➤ Fertig! Eingeloggt als ${username}(BOT).`
 	},

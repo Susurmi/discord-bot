@@ -6,6 +6,9 @@ module.exports = {
 		commandError: (file) => `[WARNING] The command at ${file} is missing a required "data" or "execute" property.`,
 		commandSuccess: (loadedCommands) => `➤ Successfully loaded ${loadedCommands} Command${loadedCommands !== 1 ? 's' : ''} !`,
 	},
+	features: {
+		auditLogStart: '➤ Successfully started the Audit log feature!'
+	},
 	ready: {
 		success: (username) => `➤ Ready! Logged in as ${username}(BOT).`
 	},
