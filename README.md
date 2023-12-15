@@ -7,7 +7,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/susurmi/weather-bot">
+  <a href="https://github.com/susurmi/discord-bot">
     <img src="./images/bot-image.png" alt="Discord Bot Logo" width="110" height="80">
   </a>
 
@@ -18,9 +18,9 @@
     Feel free to use it for your server if you like it :)
     <br />
     <br />
-    <a href="https://github.com/susurmi/weather-bot/issues">Report Bug</a>
+    <a href="https://github.com/susurmi/discord-bot/issues">Report Bug</a>
     ·
-    <a href="https://github.com/susurmi/weather-bot/issues">Request Feature</a>
+    <a href="https://github.com/susurmi/discord-bot/issues">Request Feature</a>
   </p>
 </div>
 
@@ -44,7 +44,7 @@ As the last prerequisite go over to [OpenWeatherMap](https://openweathermap.org/
 
 1. Clone the repo / or download the .zip file from this page.
    ```bash
-   git clone https://github.com/Susurmi/weather-bot.git
+   git clone https://github.com/Susurmi/discord-bot.git
    ```
 2. Install NPM packages
    ```sh
@@ -83,10 +83,10 @@ Distributed under the [MIT](https://choosealicense.com/licenses/mit/) License.
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-url]: https://github.com/Susurmi/weather-bot/graphs/contributors
-[stars-shield]: https://img.shields.io/github/stars/Susurmi/weather-bot.svg?style=for-the-badge
-[stars-url]: https://github.com/Susurmi/weather-bot/stargazers
-[issues-shield]: https://img.shields.io/github/issues/Susurmi/weather-bot.svg?style=for-the-badge
-[issues-url]: https://github.com/Susurmi/weather-bot/issues
-[license-shield]: https://img.shields.io/github/license/Susurmi/weather-bot.svg?style=for-the-badge
-[license-url]: https://github.com/Susurmi/weather-bot/blob/master/LICENSE.txt
+[contributors-url]: https://github.com/Susurmi/discord-bot/graphs/contributors
+[stars-shield]: https://img.shields.io/github/stars/Susurmi/discord-bot.svg?style=for-the-badge
+[stars-url]: https://github.com/Susurmi/discord-bot/stargazers
+[issues-shield]: https://img.shields.io/github/issues/Susurmi/discord-bot.svg?style=for-the-badge
+[issues-url]: https://github.com/Susurmi/discord-bot/issues
+[license-shield]: https://img.shields.io/github/license/Susurmi/discord-bot.svg?style=for-the-badge
+[license-url]: https://github.com/Susurmi/discord-bot/blob/master/LICENSE.txt
