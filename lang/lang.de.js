@@ -5,6 +5,7 @@ module.exports = {
 		eventSuccess: (loadedEvents) => `➤ Erfolgreich ${loadedEvents} Event${loadedEvents !== 1 ? 's' : ''} geladen!`,
 		commandError: (file) => `[WARNUNG] Dem Befehl ${file} fehlen die gebrauchten "data" oder "execute" anhänge.`,
 		commandSuccess: (loadedCommands) => `➤ Erfolgreich ${loadedCommands} Befehl${loadedCommands !== 1 ? 'e' : ''} geladen!`,
+		featureSuccess: (loadedFeatures) => `➤ Erfolgreich ${loadedFeatures} Feature${loadedFeatures !== 1 ? 's' : ''} geladen!`,
 	},
 	features: {
 		auditLogStart: '➤ Audit Log erfolgreich gestartet!'

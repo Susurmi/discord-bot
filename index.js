@@ -4,8 +4,7 @@ const { Client, GatewayIntentBits, Collection } = require('discord.js');
 const loadCommands = require('./handlers/commandHandler');
 const loadEvents = require('./handlers/eventHandler');
 const loadLanguages = require('./handlers/languageHandler');
-const freeGames = require('./features/freeGames');
-const auditLog = require('./features/auditLog');
+const loadFeatures = require('./handlers/featureHandler');
 
 const bot = new Client({
 	intents: [
@@ -32,11 +31,8 @@ bot.text = [];
 	// Load all Slashcommands
 	loadCommands(path.join(__dirname, 'commands'), bot);
 
-	// Starting Free Games
-	freeGames(bot);
-
-	// Loading Audit Log Feature
-	auditLog(bot);
+	// Load all Features
+	loadFeatures(path.join(__dirname, 'features'), bot);
 
 	// Start Bot
 	const token = process.env.BOT_TOKEN;

@@ -5,6 +5,7 @@ module.exports = {
 		eventSuccess: (loadedEvents) => `➤ Successfully loaded ${loadedEvents} Event${loadedEvents !== 1 ? 's' : ''} !`,
 		commandError: (file) => `[WARNING] The command at ${file} is missing a required "data" or "execute" property.`,
 		commandSuccess: (loadedCommands) => `➤ Successfully loaded ${loadedCommands} Command${loadedCommands !== 1 ? 's' : ''} !`,
+		featureSuccess: (loadedFeatures) => `➤ Successfully loaded ${loadedFeatures} Feature${loadedFeatures !== 1 ? 's' : ''} !`
 	},
 	features: {
 		auditLogStart: '➤ Successfully started the Audit log feature!'

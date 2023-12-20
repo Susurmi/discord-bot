@@ -5,7 +5,7 @@ const configs = require('../json/config.json');
 
 /**
  *
- * @param {Array} foldername
+ * @param {string} folderPath
  * @param {Client} bot
  */
 
