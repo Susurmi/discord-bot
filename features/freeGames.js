@@ -36,14 +36,11 @@ module.exports = (client) => {
 				headers: { 'Access-Control-Allow-Origin': '*' },
 			})
 			.then((res) => {
-				console.log('Checking for Games ...');
-
 				const { elements: Games } = res.data.data.Catalog.searchStore;
 				Games.forEach((element) => {
 					if (!element.expiryDate || element.status !== 'ACTIVE') return;
 					if (!gamesList.some((obj) => isObjectEqual(obj, element))) {
 						gamesList.push(element);
-						console.log(`new game found : ${element.title}`);
 
 						if (gamesList.length > 10) {
 							gamesList.splice(0, gamesList.length - 10);
@@ -52,8 +49,6 @@ module.exports = (client) => {
 						fs.writeFile(sentGamesList, JSON.stringify(gamesList, null, 2), (err) => {
 							if (err) {
 								console.error('Error writing JSON file:', err);
-							} else {
-								console.log('JSON file has been successfully written:', sentGamesList);
 							}
 						});
 
@@ -80,10 +75,6 @@ module.exports = (client) => {
 			});
 	};
 
-	const fetchGames = async () => {
-		getCurrentGames(configs.channels.freeGamesChannel, configs.guildid);
-	};
-
 	setInterval(() => {
 		if (!configs.channels.freeGamesChannel) {
 			return console.log(
@@ -93,6 +84,6 @@ module.exports = (client) => {
 			);
 		}
 
-		fetchGames();
+		getCurrentGames(configs.channels.freeGamesChannel, configs.guildid);
 	}, 1000 * 60 * 60);
 };
