@@ -28,6 +28,21 @@
 
 <br><br>
 
+## Overview
+
+I create this bot purely in my free time and for a small discord server.
+It currently doesn't support to be in multiple guilds!
+
+### Features
+
+- Moderation Commands (Kick/Ban)
+- Member Welcome Message
+- Weather Command
+- Free Games Feature (currently only for EPIC GAMES)
+- Audit Log
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## Getting Started
 
 With the following steps you can set this bot up for yourself.
