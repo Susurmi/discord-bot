@@ -31,7 +31,7 @@
 ## Overview
 
 I create this bot purely in my free time and for a small discord server.
-It currently doesn't support to be in multiple guilds!
+It currently doesn't support being multiple guilds!
 
 ### Features
 

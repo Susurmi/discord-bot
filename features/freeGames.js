@@ -22,7 +22,6 @@ module.exports = (client) => {
 	/**
 	 * @param {string} channel
 	 * @param {string} guild
-	 * @param {Array} post
 	 */
 
 	const getCurrentGames = async (channel, guild) => {
