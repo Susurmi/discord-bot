@@ -53,6 +53,7 @@ module.exports = (client) => {
 
 						const embed = new EmbedBuilder()
 							.setTitle(element.title)
+							.setURL(`https://store.epicgames.com/de/p/${element.productSlug}`)
 							.setThumbnail(
 								'https://logodownload.org/wp-content/uploads/2020/10/epic-games-logo-0.png',
 							)
@@ -61,7 +62,9 @@ module.exports = (client) => {
 									element.title
 								} for **free** in the [EPIC Games Store](https://store.epicgames.com/de/p/${
 									element.productSlug
-								}).\n🔴: <t:${new Date(element.expiryDate).getTime() / 1000}:R>`,
+								}).\n🟢: <t:${new Date(element.effectiveDate).getTime() / 1000}:R>\n🔴: <t:${
+									new Date(element.expiryDate).getTime() / 1000
+								}:R>`,
 							)
 							.setImage(element.keyImages[0].url);
 

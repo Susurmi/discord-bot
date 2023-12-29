@@ -28,7 +28,7 @@ bot.text = [];
 	// Load all Event Files
 	loadEvents(path.join(__dirname, 'events'), bot);
 
-	// Load all Slashcommands
+	// Load all Slash Commands
 	loadCommands(path.join(__dirname, 'commands'), bot);
 
 	// Load all Features
