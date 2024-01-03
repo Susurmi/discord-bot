@@ -73,15 +73,15 @@ module.exports = (client) => {
 	});
 
 	// Message Edited/Updated
-	client.on(Events.MessageUpdate, (message, oldContent, newContent) => {
+	client.on(Events.MessageUpdate, (oldContent, newContent) => {
 		const embed = new EmbedBuilder()
 			.setTitle('Message Edited')
 			.setColor('Grey')
 			.setDescription(
-				`Message Edited from \`${oldContent}\` to \`${newContent}\` by ${message.author}`,
+				`Message Edited from \`${oldContent}\` to \`${newContent}\` by ${newContent.author}`,
 			);
 
-		return sendLog(message.guild.id, embed);
+		return sendLog(newContent.guild.id, embed);
 	});
 
 	// Channel Created
