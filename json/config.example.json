@@ -10,7 +10,8 @@
 	"channels": {
 		"eventChannel": "",
 		"freeGamesChannel": "",
-		"logChannel": ""
+		"logChannel": "",
+		"memesChannel": ""
 	},
 	"roles": {
 		"welcomeRole": ""
