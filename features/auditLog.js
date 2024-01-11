@@ -74,6 +74,7 @@ module.exports = (client) => {
 
 	// Message Edited/Updated
 	client.on(Events.MessageUpdate, (oldContent, newContent) => {
+		if (oldContent.author.bot) return;
 		const embed = new EmbedBuilder()
 			.setTitle('Message Edited')
 			.setColor('Grey')

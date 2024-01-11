@@ -33,8 +33,24 @@ module.exports = (client) => {
 				console.error('Error during GET request:', error.message);
 			});
 	};
-	// Set up an interval to periodically send memes (every 12 hours in this case).
-	setInterval(() => {
+
+	const currentTime = new Date();
+	const targetTime = new Date(currentTime);
+	targetTime.setHours(18, 0, 0, 0);
+	const timeDiff = targetTime.getTime() - currentTime.getTime();
+
+	console.log(
+		colors.yellow(
+			`➤ Waiting for ${Math.floor(
+				timeDiff / 1000 / 60,
+			)} minutes until 6:00 PM to start 12 hour cycle of the meme feature.`,
+		),
+	);
+
+	setTimeout(() => {
 		sendMeme();
-	}, 1000 * 60 * 60 * 12);
+		setInterval(() => {
+			sendMeme();
+		}, 1000 * 60 * 60 * 24);
+	}, timeDiff);
 };
