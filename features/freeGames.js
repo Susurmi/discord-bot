@@ -37,7 +37,9 @@ module.exports = (client) => {
 			.then((res) => {
 				const { elements: Games } = res.data.data.Catalog.searchStore;
 				Games.forEach((element) => {
-					if (!element.expiryDate || element.status !== 'ACTIVE') return;
+					const releaseDate = new Date();
+					const currentDate = new Date(element.effectiveDate);
+					if (element.status !== 'ACTIVE' || releaseDate < currentDate) return;
 					if (!gamesList.some((obj) => isObjectEqual(obj, element))) {
 						gamesList.push(element);
 
@@ -53,18 +55,12 @@ module.exports = (client) => {
 
 						const embed = new EmbedBuilder()
 							.setTitle(element.title)
-							.setURL(`https://store.epicgames.com/de/p/${element.productSlug}`)
+							.setURL(`https://store.epicgames.com/de/p/${element.offerMappings[0].pageSlug}`)
 							.setThumbnail(
 								'https://logodownload.org/wp-content/uploads/2020/10/epic-games-logo-0.png',
 							)
 							.setDescription(
-								`Claim ${
-									element.title
-								} for **free** in the [EPIC Games Store](https://store.epicgames.com/de/p/${
-									element.productSlug
-								}).\n🟢: <t:${new Date(element.effectiveDate).getTime() / 1000}:R>\n🔴: <t:${
-									new Date(element.expiryDate).getTime() / 1000
-								}:R>`,
+								`Claim ${element.title} for **free** in the [EPIC Games Store](https://store.epicgames.com/de/p/${element.offerMappings[0].pageSlug}).`,
 							)
 							.setImage(element.keyImages[0].url);
 
@@ -87,5 +83,5 @@ module.exports = (client) => {
 		}
 
 		getCurrentGames(configs.channels.freeGamesChannel, configs.guildid);
-	}, 1000 * 60 * 60);
+	}, 1000 * 60);
 };
