@@ -39,7 +39,7 @@ module.exports = (client) => {
 		const embed = new EmbedBuilder()
 			.setTitle('User Joined')
 			.setColor('Green')
-			.setDescription(`Member: ${member.user} (\`${member.user.id}\`)`);
+			.setDescription(`Member: ${member.user.username} (\`${member.user.id}\`)`);
 
 		return sendLog(member.guild.id, embed);
 	});
@@ -49,7 +49,7 @@ module.exports = (client) => {
 		const embed = new EmbedBuilder()
 			.setTitle('User Left')
 			.setColor('Red')
-			.setDescription(`Member: ${member.user} (\`${member.user.id}\`)`);
+			.setDescription(`Member: ${member.user.username} (\`${member.user.id}\`)`);
 
 		return sendLog(member.guild.id, embed);
 	});
@@ -75,11 +75,12 @@ module.exports = (client) => {
 	// Message Edited/Updated
 	client.on(Events.MessageUpdate, (oldContent, newContent) => {
 		if (oldContent.author.bot) return;
+		if (oldContent === newContent) return;
 		const embed = new EmbedBuilder()
 			.setTitle('Message Edited')
 			.setColor('Grey')
 			.setDescription(
-				`Message Edited from \`${oldContent}\` to \`${newContent}\` by ${newContent.author}`,
+				`Message Edited from \n\`${oldContent}\`\n to \n\`${newContent}\` by ${newContent.author}`,
 			);
 
 		return sendLog(newContent.guild.id, embed);
