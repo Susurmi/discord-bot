@@ -37,9 +37,9 @@ module.exports = (client) => {
 			.then((res) => {
 				const { elements: Games } = res.data.data.Catalog.searchStore;
 				Games.forEach((element) => {
-					const releaseDate = new Date();
-					const currentDate = new Date(element.effectiveDate);
-					if (element.status !== 'ACTIVE' || releaseDate < currentDate) return;
+					const releaseDate = new Date(element.effectiveDate);
+					const currentDate = new Date();
+					if (element.status !== 'ACTIVE' || releaseDate > currentDate) return;
 					if (!gamesList.some((obj) => isObjectEqual(obj, element))) {
 						gamesList.push(element);
 
@@ -73,7 +73,20 @@ module.exports = (client) => {
 			});
 	};
 
-	setInterval(() => {
+	const currentTime = new Date();
+	const targetTime = new Date(currentTime);
+	targetTime.setHours(19, 0, 0, 0);
+	const timeDiff = targetTime.getTime() - currentTime.getTime();
+
+	console.log(
+		colors.yellow(
+			`➤ Waiting for ${Math.floor(
+				timeDiff / 1000 / 60,
+			)} minutes until 7:00 PM (17:00) to start 24 hour cycle of the meme feature.`,
+		),
+	);
+
+	setTimeout(() => {
 		if (!configs.channels.freeGamesChannel) {
 			return console.log(
 				colors.yellow(
@@ -81,7 +94,8 @@ module.exports = (client) => {
 				),
 			);
 		}
-
-		getCurrentGames(configs.channels.freeGamesChannel, configs.guildid);
-	}, 1000 * 60);
+		setInterval(() => {
+			getCurrentGames(configs.channels.freeGamesChannel, configs.guildid);
+		}, 1000 * 60 * 60 * 24);
+	}, timeDiff);
 };

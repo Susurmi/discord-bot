@@ -36,14 +36,14 @@ module.exports = (client) => {
 
 	const currentTime = new Date();
 	const targetTime = new Date(currentTime);
-	targetTime.setHours(18, 0, 0, 0);
+	targetTime.setHours(20, 0, 0, 0);
 	const timeDiff = targetTime.getTime() - currentTime.getTime();
 
 	console.log(
 		colors.yellow(
 			`➤ Waiting for ${Math.floor(
 				timeDiff / 1000 / 60,
-			)} minutes until 6:00 PM to start 12 hour cycle of the meme feature.`,
+			)} minutes until 8:00 PM (20:00) to start 12 hour cycle of the meme feature.`,
 		),
 	);
 
@@ -51,6 +51,6 @@ module.exports = (client) => {
 		sendMeme();
 		setInterval(() => {
 			sendMeme();
-		}, 1000 * 60 * 60 * 24);
+		}, 1000 * 60 * 60 * 12);
 	}, timeDiff);
 };
