@@ -34,9 +34,14 @@ module.exports = (client) => {
 			});
 	};
 
+	// Calculating difference between current time and the desired time,
+	// if the desired time has already passed sets start to tomorrow
 	const currentTime = new Date();
 	const targetTime = new Date(currentTime);
 	targetTime.setHours(20, 0, 0, 0);
+	if (currentTime.getHours() >= targetTime.getHours()) {
+		targetTime.setDate(currentTime.getDate() + 1);
+	}
 	const timeDiff = targetTime.getTime() - currentTime.getTime();
 
 	console.log(
@@ -47,6 +52,7 @@ module.exports = (client) => {
 		),
 	);
 
+	// starting 12h loop
 	setTimeout(() => {
 		sendMeme();
 		setInterval(() => {
