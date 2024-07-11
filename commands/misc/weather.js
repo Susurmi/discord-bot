@@ -1,4 +1,4 @@
-require('dotenv').config({ path: '../../../.env' });
+require('dotenv').config({ path: '../../.env' });
 const axios = require('axios');
 const {
 	SlashCommandBuilder,
@@ -59,6 +59,7 @@ module.exports = {
 			word = word.replace(/ß/g, 'ss');
 			return word;
 		};
+
 		const city = deUmlaut(interaction.options.getString('city'));
 		const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.WEATHER_API_KEY}`;
 		axios({

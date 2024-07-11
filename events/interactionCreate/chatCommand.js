@@ -16,7 +16,7 @@ module.exports = {
 		const command = interaction.client.commands.get(interaction.commandName);
 
 		if (!command) {
-			console.error(colors.red(text.InteractionCreate.commandNotFound(interaction.commandName)));
+			console.error(colors.red(text.interactionCreate.commandNotFound(interaction.commandName)));
 			return;
 		}
 
@@ -37,7 +37,7 @@ module.exports = {
 			if (now < expirationTime) {
 				const expiredTimestamp = Math.round(expirationTime / 1000);
 				return interaction.reply({
-					content: text.InteractionCreate.commandError(command.data.name, expiredTimestamp),
+					content: text.interactionCreate.cooldownTimeout(command.data.name, expiredTimestamp),
 					ephemeral: true,
 				});
 			}
@@ -49,7 +49,7 @@ module.exports = {
 		try {
 			await command.execute(interaction);
 		} catch (error) {
-			console.error(colors.red(text.InteractionCreate.commandError(interaction.commandName)));
+			console.error(colors.red(text.interactionCreate.commandError(interaction.commandName)));
 		}
 	},
 };
