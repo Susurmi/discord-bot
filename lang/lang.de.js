@@ -20,5 +20,10 @@ module.exports = {
 	},
 	presence: {
 		success: (newStatus) => `Bot Status erfolgreich aktualisiert zu :\n**${newStatus}** !`
+	},
+	welcomeMessage: {
+		title: (member) => `🎉 Willkommen auf dem ${member.guild.name} Server!`,
+		description: (member) => `Grüße ${member.user.username}! Willkommen beim **${member.guild.name}** Server! \n Bitte lies die Regeln und hab Spaß!`,
+		footer: (member) => `Aktuelle Mitgliedszahl: ${member.guild.memberCount}`
 	}
 };
