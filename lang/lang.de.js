@@ -8,7 +8,9 @@ module.exports = {
 		featureSuccess: (loadedFeatures) => `➤ Erfolgreich ${loadedFeatures} Feature${loadedFeatures !== 1 ? 's' : ''} geladen!`,
 	},
 	features: {
-		auditLogStart: '➤ Audit Log erfolgreich gestartet!'
+		auditLogStart: '➤ Audit Log erfolgreich gestartet!',
+		dailyMemeStart: (time) =>  `➤ Warte noch ${time} Minuten bis 20 Uhr um den 12h Zyklus des Meme Features zu starten.`,
+		dailyMemeMissingChannel: 'Bitte hinterlege eine Discord Kanal ID in der config.json Datei.'
 	},
 	ready: {
 		success: (username) => `➤ Fertig! Eingeloggt als ${username}(BOT).`

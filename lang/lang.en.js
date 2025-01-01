@@ -8,7 +8,9 @@ module.exports = {
 		featureSuccess: (loadedFeatures) => `➤ Successfully loaded ${loadedFeatures} Feature${loadedFeatures !== 1 ? 's' : ''} !`
 	},
 	features: {
-		auditLogStart: '➤ Successfully started the Audit log feature!'
+		auditLogStart: '➤ Successfully started the Audit log feature!',
+		dailyMemeStart: (time) =>  `➤ Waiting for ${time} minutes until 8:00 PM (20:00) to start 12 hour cycle of the meme feature.`,
+		dailyMemeMissingChannel: 'Please provide a channel id for the memes feature in the configj.json file.'
 	},
 	ready: {
 		success: (username) => `➤ Ready! Logged in as ${username}(BOT).`
