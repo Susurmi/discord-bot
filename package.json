@@ -2,6 +2,7 @@
 	"name": "discord-bot",
 	"description": "The discord bot for my discord server",
 	"version": "0.2",
+	"type": "commonjs",
 	"main": "index.js",
 	"repository": {
 		"type": "github",
@@ -27,6 +28,10 @@
 		"dotenv": "^16.4.5"
 	},
 	"devDependencies": {
+		"@eslint/js": "^9.23.0",
+		"eslint": "^9.23.0",
+		"eslint-plugin-jsdoc": "^50.6.9",
+		"globals": "^16.0.0",
 		"nodemon": "^3.1.4"
 	}
 }
