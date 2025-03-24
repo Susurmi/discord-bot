@@ -8,18 +8,9 @@ module.exports = {
 		.setDescriptionLocalizations({
 			de: 'Einen Nutzer vom Server muten.',
 		})
-		.addUserOption((option) =>
-			option
-				.setName('target-user')
-				.setDescription('The user you want to timeout ')
-				.setRequired(true),
-		)
-		.addStringOption((option) =>
-			option.setName('reason').setDescription('The reason you want to timeout this user.'),
-		)
-		.addIntegerOption((option) =>
-			option.setName('time').setDescription('The amount of time you want to mute the user for.'),
-		)
+		.addUserOption((option) => option.setName('target-user').setDescription('The user you want to timeout ').setRequired(true))
+		.addStringOption((option) => option.setName('reason').setDescription('The reason you want to timeout this user.'))
+		.addIntegerOption((option) => option.setName('time').setDescription('The amount of time you want to mute the user for.'))
 		.setDefaultMemberPermissions(PermissionFlagsBits.KickMembers),
 
 	/**

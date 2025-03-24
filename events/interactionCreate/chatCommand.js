@@ -50,6 +50,7 @@ module.exports = {
 			await command.execute(interaction);
 		} catch (error) {
 			console.error(colors.red(text.interactionCreate.commandError(interaction.commandName)));
+			console.error(error);
 		}
 	},
 };

@@ -17,11 +17,7 @@ module.exports = (client) => {
 
 	const sendLog = async (guildId, embed) => {
 		if (!configs.channels.logChannel) {
-			return console.log(
-				colors.yellow(
-					'Please provide a log channel id in the config.json to use the auditlog feature.',
-				),
-			);
+			return console.log(colors.yellow('Please provide a log channel id in the config.json to use the auditlog feature.'));
 		}
 
 		try {
@@ -79,29 +75,21 @@ module.exports = (client) => {
 		const embed = new EmbedBuilder()
 			.setTitle('Message Edited')
 			.setColor('Grey')
-			.setDescription(
-				`Message Edited from \n\`${oldContent}\`\n to \n\`${newContent}\` by ${newContent.author}`,
-			);
+			.setDescription(`Message Edited from \n\`${oldContent}\`\n to \n\`${newContent}\` by ${newContent.author}`);
 
 		return sendLog(newContent.guild.id, embed);
 	});
 
 	// Channel Created
 	client.on(Events.ChannelCreate, (channel) => {
-		const embed = new EmbedBuilder()
-			.setTitle('Channel Created')
-			.setColor('Green')
-			.setDescription(`${channel.name} has been created.`);
+		const embed = new EmbedBuilder().setTitle('Channel Created').setColor('Green').setDescription(`${channel.name} has been created.`);
 
 		return sendLog(channel.guild.id, embed);
 	});
 
 	// Channel Deleted
 	client.on(Events.ChannelDelete, (channel) => {
-		const embed = new EmbedBuilder()
-			.setTitle('Channel Deleted')
-			.setColor('Red')
-			.setDescription(`${channel.name} has been deleted.`);
+		const embed = new EmbedBuilder().setTitle('Channel Deleted').setColor('Red').setDescription(`${channel.name} has been deleted.`);
 
 		return sendLog(channel.guild.id, embed);
 	});

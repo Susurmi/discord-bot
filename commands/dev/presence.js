@@ -1,10 +1,5 @@
-const {
-	SlashCommandBuilder,
-	PermissionFlagsBits,
-	EmbedBuilder,
-	ActivityType,
-	CommandInteraction,
-} = require('discord.js');
+const { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder, ActivityType, CommandInteraction } = require('discord.js');
+
 const colors = require('colors');
 const fs = require('fs');
 const path = require('path');

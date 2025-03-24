@@ -7,9 +7,7 @@ const { bot, guildid } = require('./json/config.json');
 const colors = require('colors');
 
 if (!guildid || !bot.id) {
-	console.log(
-		colors.red('Either guild ID or client ID are missing, provide them in the config.json file.'),
-	);
+	console.log(colors.red('Either guild ID or client ID are missing, provide them in the config.json file.'));
 	process.exit();
 }
 
@@ -34,11 +32,7 @@ for (const folder of commandFolders) {
 		if ('data' in command && 'execute' in command) {
 			commands.push(command.data.toJSON());
 		} else {
-			console.log(
-				colors.red(
-					`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`,
-				),
-			);
+			console.log(colors.red(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`));
 		}
 	}
 }

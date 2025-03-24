@@ -1,12 +1,7 @@
 require('dotenv').config({ path: '../../.env' });
-const axios = require('axios');
-const {
-	SlashCommandBuilder,
-	EmbedBuilder,
-	CommandInteraction,
-	PermissionFlagsBits,
-} = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder, CommandInteraction, PermissionFlagsBits } = require('discord.js');
 const colors = require('colors');
+const axios = require('axios');
 
 module.exports = {
 	data: new SlashCommandBuilder()

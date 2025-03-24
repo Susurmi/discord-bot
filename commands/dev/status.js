@@ -1,9 +1,4 @@
-const {
-	SlashCommandBuilder,
-	PermissionFlagsBits,
-	EmbedBuilder,
-	CommandInteraction,
-} = require('discord.js');
+const { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder, CommandInteraction } = require('discord.js');
 const colors = require('colors');
 
 module.exports = {

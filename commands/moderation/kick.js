@@ -8,12 +8,8 @@ module.exports = {
 		.setDescriptionLocalizations({
 			de: 'Einen Nutzer vom Server kicken.',
 		})
-		.addUserOption((option) =>
-			option.setName('target-user').setDescription('The user you want to kick').setRequired(true),
-		)
-		.addStringOption((option) =>
-			option.setName('reason').setDescription('The reason you want to kick this user.'),
-		)
+		.addUserOption((option) => option.setName('target-user').setDescription('The user you want to kick').setRequired(true))
+		.addStringOption((option) => option.setName('reason').setDescription('The reason you want to kick this user.'))
 		.setDefaultMemberPermissions(PermissionFlagsBits.KickMembers),
 
 	/**
@@ -43,9 +39,7 @@ module.exports = {
 		const requestUserRolePosition = interaction.member.roles.highest.position;
 
 		if (targetUserRolePosition >= requestUserRolePosition) {
-			await interaction.editReply(
-				"You can't kick this user because the have the same/higher role than you.",
-			);
+			await interaction.editReply("You can't kick this user because the have the same/higher role than you.");
 			return;
 		}
 

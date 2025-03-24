@@ -17,10 +17,7 @@ module.exports = {
 					de: 'event das simuliert werden soll.',
 				})
 				.setRequired(true)
-				.addChoices(
-					{ name: 'guildMemberAdd', value: 'guildMemberAdd' },
-					{ name: 'guildMemberRemove', value: 'guildMemberRemove' },
-				),
+				.addChoices({ name: 'guildMemberAdd', value: 'guildMemberAdd' }, { name: 'guildMemberRemove', value: 'guildMemberRemove' }),
 		),
 
 	/**

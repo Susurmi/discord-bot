@@ -8,12 +8,8 @@ module.exports = {
 		.setDescriptionLocalizations({
 			de: 'Einen Nutzer vom Server bannen.',
 		})
-		.addUserOption((option) =>
-			option.setName('target-user').setDescription('The user you want to ban').setRequired(true),
-		)
-		.addStringOption((option) =>
-			option.setName('reason').setDescription('The reason you want to ban this user.'),
-		)
+		.addUserOption((option) => option.setName('target-user').setDescription('The user you want to ban').setRequired(true))
+		.addStringOption((option) => option.setName('reason').setDescription('The reason you want to ban this user.'))
 		.setDefaultMemberPermissions(PermissionFlagsBits.BanMembers),
 
 	/**
@@ -42,9 +38,7 @@ module.exports = {
 		const requestUserRolePosition = interaction.member.roles.highest.position;
 
 		if (targetUserRolePosition >= requestUserRolePosition) {
-			await interaction.editReply(
-				"You can't ban this user because the have the same/higher role than you.",
-			);
+			await interaction.editReply("You can't ban this user because the have the same/higher role than you.");
 			return;
 		}
 
@@ -54,9 +48,7 @@ module.exports = {
 		}
 
 		try {
-			await targetUser
-				.ban({ deleteMessageSeconds: 60 * 60 * 24, reason: reason })
-				.catch(console.error);
+			await targetUser.ban({ deleteMessageSeconds: 60 * 60 * 24, reason: reason }).catch(console.error);
 			await interaction.editReply(`User ${targetUser} was banned\nReason: ${reason}`);
 		} catch (error) {
 			console.error(colors.red(error));
