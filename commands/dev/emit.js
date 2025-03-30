@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, PermissionFlagsBits, CommandInteraction } = require('discord.js');
+const { SlashCommandBuilder, PermissionFlagsBits, CommandInteraction, MessageFlags } = require('discord.js');
 const colors = require('colors');
 
 module.exports = {
@@ -25,7 +25,7 @@ module.exports = {
 	 */
 
 	async execute(interaction) {
-		await interaction.deferReply({ ephemeral: true });
+		await interaction.deferReply({ flags: MessageFlags.Ephemeral });
 		const option = interaction.options.getString('event');
 		try {
 			interaction.client.emit(option, interaction.member);

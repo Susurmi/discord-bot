@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder, ActivityType, CommandInteraction } = require('discord.js');
+const { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder, ActivityType, CommandInteraction, MessageFlags } = require('discord.js');
 
 const colors = require('colors');
 const fs = require('fs');
@@ -58,7 +58,7 @@ module.exports = {
 
 			return interaction.reply({
 				embeds: [reply.setDescription(text.presence.success(stringOption))],
-				ephemeral: true,
+				flags: MessageFlags.Ephemeral,
 			});
 		} catch (error) {
 			console.error(colors.red(error));

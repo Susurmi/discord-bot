@@ -22,7 +22,7 @@ export default defineConfig([
 			'no-unused-vars': [
 				'warn',
 				{
-					varsIgnorePattern: '^CommandInteraction|Client|GuildMember|GuildScheduledEvent$', // Ignore Vars used for JSDoc/IntelliSense`
+					varsIgnorePattern: '^CommandInteraction|Client|GuildMember|GuildScheduledEvent$', // Ignore Vars from discorsdjs used for JSDoc/IntelliSense`
 				},
 			],
 		},
