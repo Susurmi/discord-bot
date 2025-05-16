@@ -1,0 +1,9 @@
+node_modules
+README.md
+.vscode
+images
+.env.example
+.gitattributes
+.gitignore
+eslint.config.mjs
+nodemon.json
