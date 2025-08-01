@@ -1,0 +1,6 @@
+services:
+  bot:
+    build: .
+    environment:
+      - BOT_TOKEN=bottoken
+      - WEATHER_API_KEY=openweathermapkey
