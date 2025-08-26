@@ -4,7 +4,7 @@ const colors = require('colors');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('timeout')
-		.setDescription('Timeout a member on this serever.')
+		.setDescription('Timeout a member on this server.')
 		.setDescriptionLocalizations({
 			de: 'Einen Nutzer vom Server muten.',
 		})
@@ -21,7 +21,7 @@ module.exports = {
 	async execute(interaction) {
 		const targetUserId = await interaction.options.getUser('target-user');
 		const reason = interaction.options.getString('reason') ?? 'No reason was provided.';
-		const time = interaction.options.getInteger('time') ?? '60';
+		const time = interaction.options.getInteger('time') ?? 60;
 
 		await interaction.deferReply();
 

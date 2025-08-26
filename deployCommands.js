@@ -8,12 +8,12 @@ const colors = require('colors');
 
 if (!guildid || !bot.id) {
 	console.log(colors.red('Either guild ID or client ID are missing, provide them in the config.json file.'));
-	process.exit();
+	process.exit(1);
 }
 
 if (!token) {
 	console.log(colors.red('The Bot Token is missing, provide it in the .env file.'));
-	process.exit();
+	process.exit(1);
 }
 
 const commands = [];

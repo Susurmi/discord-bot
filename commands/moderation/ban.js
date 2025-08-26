@@ -4,7 +4,7 @@ const colors = require('colors');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('ban')
-		.setDescription('Bans a user from this serever.')
+		.setDescription('Bans a user from this server.')
 		.setDescriptionLocalizations({
 			de: 'Einen Nutzer vom Server bannen.',
 		})

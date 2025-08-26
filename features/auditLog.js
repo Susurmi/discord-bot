@@ -70,12 +70,12 @@ module.exports = (client) => {
 
 	// Message Edited/Updated
 	client.on(Events.MessageUpdate, (oldContent, newContent) => {
-		if (oldContent.author.bot) return;
+		if (!oldContent.author || oldContent.author.bot) return;
 		if (oldContent.content === newContent.content) return;
 		const embed = new EmbedBuilder()
 			.setTitle('Message Edited')
 			.setColor('Grey')
-			.setDescription(`Message Edited from \n\`${oldContent}\`\n to \n\`${newContent}\` by ${newContent.author}`);
+			.setDescription(`Message Edited from \n\`${oldContent.content || 'Unknown'}\`\n to \n\`${newContent.content || 'Unknown'}\` by ${newContent.author}`);
 
 		return sendLog(newContent.guild.id, embed);
 	});

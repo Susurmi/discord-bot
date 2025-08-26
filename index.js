@@ -36,6 +36,13 @@ bot.text = [];
 
 	// Start Bot
 	const token = process.env.BOT_TOKEN;
-	if (!token) process.exit();
-	bot.login(token);
+	if (!token) {
+		console.error('BOT_TOKEN is not set in the environment variables. Please check your .env file.');
+		process.exit(1);
+	}
+	
+	bot.login(token).catch(error => {
+		console.error('Failed to login to Discord:', error);
+		process.exit(1);
+	});
 })();

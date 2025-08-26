@@ -10,7 +10,7 @@ module.exports = {
 
 	async execute(interaction) {
 		const { client, locale } = interaction;
-		const { data: text } = client.text.find((obj) => obj.lang === locale.substring(0, 2) || 'en');
+		const { data: text } = client.text.find((obj) => obj.lang === locale.substring(0, 2)) || client.text.find((obj) => obj.lang === 'en') || { data: { interactionCreate: { commandNotFound: () => 'Command not found', cooldownTimeout: () => 'Cooldown active', commandError: () => 'Command error' } } };
 		if (!interaction.isChatInputCommand()) return;
 
 		const command = interaction.client.commands.get(interaction.commandName);

@@ -4,7 +4,7 @@ const colors = require('colors');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('kick')
-		.setDescription('Kicks a member from this serever.')
+		.setDescription('Kicks a member from this server.')
 		.setDescriptionLocalizations({
 			de: 'Einen Nutzer vom Server kicken.',
 		})
