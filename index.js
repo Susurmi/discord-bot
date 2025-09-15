@@ -40,8 +40,8 @@ bot.text = [];
 		console.error('BOT_TOKEN is not set in the environment variables. Please check your .env file.');
 		process.exit(1);
 	}
-	
-	bot.login(token).catch(error => {
+
+	bot.login(token).catch((error) => {
 		console.error('Failed to login to Discord:', error);
 		process.exit(1);
 	});

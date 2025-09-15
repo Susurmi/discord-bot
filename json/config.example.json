@@ -14,5 +14,8 @@
 	},
 	"roles": {
 		"welcomeRole": ""
+	},
+	"memes": {
+		"times": [8, 20]
 	}
 }

@@ -34,23 +34,52 @@ module.exports = (client) => {
 			});
 	};
 
-	// Calculating difference between current time and the desired time,
-	// if the desired time has already passed sets start to tomorrow
-	const currentTime = new Date();
-	const targetTime = new Date(currentTime);
-	targetTime.setHours(20, 0, 0, 0);
-	if (currentTime.getHours() >= targetTime.getHours()) {
-		targetTime.setDate(currentTime.getDate() + 1);
-	}
-	const timeDiff = targetTime.getTime() - currentTime.getTime();
+	// Get meme times from config, default to [8, 20] if not specified
+	const memeTimes = configs.memes?.times || [8, 20];
 
-	console.log(colors.yellow(text.features.dailyMemeStart(Math.floor(timeDiff / 1000 / 60))));
+	// Sort times to ensure proper ordering
+	const sortedMemeTimes = [...memeTimes].sort((a, b) => a - b);
 
-	// starting 12h loop
-	setTimeout(() => {
-		sendMeme();
-		setInterval(() => {
+	// Function to calculate time until next scheduled meme time
+	const getNextMemeTime = () => {
+		const currentTime = new Date();
+		const currentHour = currentTime.getHours();
+		const nextTime = new Date(currentTime);
+
+		// Find the next meme time
+		let nextMemeHour = null;
+
+		// Check if there's a meme time later today
+		for (const hour of sortedMemeTimes) {
+			if (currentHour < hour) {
+				nextMemeHour = hour;
+				break;
+			}
+		}
+
+		if (nextMemeHour !== null) {
+			// Next meme time is today
+			nextTime.setHours(nextMemeHour, 0, 0, 0);
+		} else {
+			// Next meme time is tomorrow at the first scheduled hour
+			nextTime.setDate(currentTime.getDate() + 1);
+			nextTime.setHours(sortedMemeTimes[0], 0, 0, 0);
+		}
+
+		return nextTime.getTime() - currentTime.getTime();
+	};
+
+	// Function to schedule the next meme
+	const scheduleNextMeme = () => {
+		const timeDiff = getNextMemeTime();
+		console.log(colors.yellow(text.features.dailyMemeStart(Math.floor(timeDiff / 1000 / 60))));
+
+		setTimeout(() => {
 			sendMeme();
-		}, 1000 * 60 * 60 * 12);
-	}, timeDiff);
+			scheduleNextMeme(); // Schedule the next one after sending
+		}, timeDiff);
+	};
+
+	// Start the scheduling
+	scheduleNextMeme();
 };
