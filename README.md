@@ -1,8 +1,6 @@
 <a name="readme-top"></a>
 
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
+[![Stargazers][stars-shield]][stars-url] [![Issues][issues-shield]][issues-url] [![MIT License][license-shield]][license-url]
 
 <!-- PROJECT LOGO -->
 <br />
@@ -30,8 +28,7 @@
 
 ## Overview
 
-I create this bot purely in my free time and for a small discord server.
-It currently doesn't support being multiple guilds!
+I create this bot purely in my free time and for a small discord server. It currently doesn't support being multiple guilds!
 
 ### Features
 
@@ -49,9 +46,10 @@ With the following steps you can set this bot up for yourself.
 
 ### Prerequisites
 
-First up you need your own discord bot user. You can set one up on [Discord's Developer Portal](https://discord.com/developers/applications).<br>
-You also need to have [NodeJS](https://nodejs.org/en/) (Version 20.10.0 and above) installed.<br>
-As the last prerequisite go over to [OpenWeatherMap](https://openweathermap.org/) and signUp to get a free tier API Key.
+First up you need your own discord bot user. You can set one up on
+[Discord's Developer Portal](https://discord.com/developers/applications).<br> You also need to have [NodeJS](https://nodejs.org/en/)
+(Version 20.10.0 and above) installed.<br> As the last prerequisite go over to [OpenWeatherMap](https://openweathermap.org/) and signUp to
+get a free tier API Key.
 
 <!-- INSTALLATION -->
 

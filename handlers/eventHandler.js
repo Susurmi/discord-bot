@@ -10,7 +10,8 @@ const configs = require('../json/config.json');
  */
 
 module.exports = (folderPath, bot) => {
-	const { data: text } = bot.text.find((obj) => obj.lang === configs.lang) || bot.text.find((obj) => obj.lang === 'en') || { data: { handlers: { eventSuccess: () => 'Events loaded' } } };
+	const { data: text } = bot.text.find((obj) => obj.lang === configs.lang) ||
+		bot.text.find((obj) => obj.lang === 'en') || { data: { handlers: { eventSuccess: () => 'Events loaded' } } };
 	const eventFolders = getFiles(folderPath, true);
 	let loadedEvents = 0;
 

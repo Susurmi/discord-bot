@@ -7,9 +7,8 @@ module.exports = {
 	once: true,
 
 	/**
-	 * @param {Client} client
+	 * @param {Client} client - The Discord client
 	 */
-
 	execute(client) {
 		const { data: text } = client.text.find((obj) => obj.lang === configs.lang || 'en');
 		client.user.setUsername(configs.bot.nickname);

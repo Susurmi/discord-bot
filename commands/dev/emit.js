@@ -21,9 +21,8 @@ module.exports = {
 		),
 
 	/**
-	 * @param {CommandInteraction} interaction
+	 * @param {CommandInteraction} interaction - The command interaction
 	 */
-
 	async execute(interaction) {
 		await interaction.deferReply({ flags: MessageFlags.Ephemeral });
 		const option = interaction.options.getString('event');

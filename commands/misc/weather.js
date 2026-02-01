@@ -30,9 +30,8 @@ module.exports = {
 	cooldown: 30,
 
 	/**
-	 * @param {CommandInteraction} interaction
+	 * @param {CommandInteraction} interaction - The command interaction
 	 */
-
 	async execute(interaction) {
 		const degToText = (degree) => {
 			if (degree > 337.5) return 'Northerly ⬆';

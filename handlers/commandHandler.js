@@ -10,7 +10,10 @@ const configs = require('../json/config.json');
  */
 
 module.exports = (folderPath, bot) => {
-	const { data: text } = bot.text.find((obj) => obj.lang === configs.lang) || bot.text.find((obj) => obj.lang === 'en') || { data: { handlers: { commandError: () => 'Command error', commandSuccess: () => 'Commands loaded' } } };
+	const { data: text } = bot.text.find((obj) => obj.lang === configs.lang) ||
+		bot.text.find((obj) => obj.lang === 'en') || {
+			data: { handlers: { commandError: () => 'Command error', commandSuccess: () => 'Commands loaded' } },
+		};
 	const commandFolders = getFiles(folderPath, true);
 	let loadedCommands = 0;
 

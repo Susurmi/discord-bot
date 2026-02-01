@@ -26,7 +26,8 @@ module.exports = (folderPath, bot) => {
 		}
 	});
 
-	const { data: text } = bot.text.find((obj) => obj.lang === configs.lang) || bot.text.find((obj) => obj.lang === 'en') || { data: { handlers: { langSuccess: () => 'Language loading completed' } } };
+	const { data: text } = bot.text.find((obj) => obj.lang === configs.lang) ||
+		bot.text.find((obj) => obj.lang === 'en') || { data: { handlers: { langSuccess: () => 'Language loading completed' } } };
 
 	console.log(colors.green(text.handlers.langSuccess(bot.text.length)));
 };

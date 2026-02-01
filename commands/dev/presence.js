@@ -29,9 +29,8 @@ module.exports = {
 		.setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
 
 	/**
-	 * @param {CommandInteraction} interaction
+	 * @param {CommandInteraction} interaction - The command interaction
 	 */
-
 	async execute(interaction) {
 		const { data: text } = interaction.client.text.find((obj) => obj.lang === interaction.locale);
 		const { options } = interaction;

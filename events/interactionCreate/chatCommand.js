@@ -5,12 +5,20 @@ module.exports = {
 	name: Events.InteractionCreate,
 
 	/**
-	 * @param {CommandInteraction} interaction
+	 * @param {CommandInteraction} interaction - The interaction that was created
 	 */
-
 	async execute(interaction) {
 		const { client, locale } = interaction;
-		const { data: text } = client.text.find((obj) => obj.lang === locale.substring(0, 2)) || client.text.find((obj) => obj.lang === 'en') || { data: { interactionCreate: { commandNotFound: () => 'Command not found', cooldownTimeout: () => 'Cooldown active', commandError: () => 'Command error' } } };
+		const { data: text } = client.text.find((obj) => obj.lang === locale.substring(0, 2)) ||
+			client.text.find((obj) => obj.lang === 'en') || {
+				data: {
+					interactionCreate: {
+						commandNotFound: () => 'Command not found',
+						cooldownTimeout: () => 'Cooldown active',
+						commandError: () => 'Command error',
+					},
+				},
+			};
 		if (!interaction.isChatInputCommand()) return;
 
 		const command = interaction.client.commands.get(interaction.commandName);

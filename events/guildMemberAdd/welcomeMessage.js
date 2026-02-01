@@ -7,9 +7,8 @@ module.exports = {
 	name: Events.GuildMemberAdd,
 
 	/**
-	 * @param {GuildMember} member
+	 * @param {GuildMember} member - The guild member that joined
 	 */
-
 	async execute(member) {
 		const bot = member.client;
 		const { data: text } = bot.text.find((obj) => obj.lang === configs.lang || 'en');

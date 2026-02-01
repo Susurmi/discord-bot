@@ -75,7 +75,9 @@ module.exports = (client) => {
 		const embed = new EmbedBuilder()
 			.setTitle('Message Edited')
 			.setColor('Grey')
-			.setDescription(`Message Edited from \n\`${oldContent.content || 'Unknown'}\`\n to \n\`${newContent.content || 'Unknown'}\` by ${newContent.author}`);
+			.setDescription(
+				`Message Edited from \n\`${oldContent.content || 'Unknown'}\`\n to \n\`${newContent.content || 'Unknown'}\` by ${newContent.author}`,
+			);
 
 		return sendLog(newContent.guild.id, embed);
 	});

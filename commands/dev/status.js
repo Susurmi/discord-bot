@@ -11,9 +11,8 @@ module.exports = {
 		.setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
 
 	/**
-	 * @param {CommandInteraction} interaction
+	 * @param {CommandInteraction} interaction - The command interaction
 	 */
-
 	async execute(interaction) {
 		await interaction.deferReply();
 

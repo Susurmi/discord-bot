@@ -13,9 +13,8 @@ module.exports = {
 		.setDefaultMemberPermissions(PermissionFlagsBits.BanMembers),
 
 	/**
-	 * @param {CommandInteraction} interaction
+	 * @param {CommandInteraction} interaction - The command interaction
 	 */
-
 	async execute(interaction) {
 		const targetUserId = await interaction.options.getUser('target-user');
 		const reason = interaction.options.getString('reason') ?? 'No reason was provided.';

@@ -5,9 +5,8 @@ module.exports = {
 	name: Events.GuildScheduledEventCreate,
 
 	/**
-	 * @param {GuildScheduledEvent} event
+	 * @param {GuildScheduledEvent} event - The scheduled event that was created
 	 */
-
 	async execute(event) {
 		if (!config.channels.eventChannel) return;
 		const eventLink = event.url;
