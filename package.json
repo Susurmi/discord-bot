@@ -25,7 +25,7 @@
 	"author": "Susurmi",
 	"license": "MIT",
 	"dependencies": {
-		"axios": "^1.11.0",
+		"axios": "^1.13.5",
 		"colors": "^1.4.0",
 		"discord.js": "^14.21.0",
 		"dotenv": "^17.2.1"
